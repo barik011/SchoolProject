@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Merriweather:wght@400;700&display=swap");
+
+:root {
+    --primary-color: #0b6efd;
+    --surface: #f7f9fc;
+    --surface-strong: #ffffff;
+    --text-muted: #5f6b7a;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Manrope", sans-serif;
+    background: linear-gradient(180deg, #f5f8ff 0%, #ffffff 45%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Merriweather", serif;
+}
+
+.site-header .navbar {
+    backdrop-filter: blur(8px);
+}
+
+.brand-main {
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--primary-color);
+    line-height: 1.1;
+}
+
+.brand-sub {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.nav-link.active {
+    color: var(--primary-color) !important;
+    font-weight: 700;
+}
+
+.hero-shell {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-shell::before,
+.hero-shell::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(55px);
+    opacity: 0.28;
+    z-index: 0;
+}
+
+.hero-shell::before {
+    width: 300px;
+    height: 300px;
+    background: var(--primary-color);
+    top: -120px;
+    left: -80px;
+}
+
+.hero-shell::after {
+    width: 260px;
+    height: 260px;
+    background: #19c37d;
+    right: -90px;
+    top: -90px;
+}
+
+.hero-box {
+    position: relative;
+    z-index: 1;
+    background: var(--surface-strong);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 20px 35px rgba(17, 31, 53, 0.08);
+}
+
+.hero-kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.78rem;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.hero-title {
+    margin-bottom: 0.65rem;
+}
+
+.hero-copy {
+    color: var(--text-muted);
+}
+
+.home-banner-wrap {
+    width: 100%;
+}
+
+.home-banner-carousel {
+    position: relative;
+    width: 100%;
+}
+
+.home-banner-carousel .carousel-item {
+    height: clamp(340px, 58vh, 620px);
+}
+
+.home-banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: bannerZoom 9s ease-in-out infinite alternate;
+}
+
+.home-banner-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(9, 21, 43, 0.72) 0%, rgba(9, 21, 43, 0.35) 45%, rgba(9, 21, 43, 0.75) 100%);
+}
+
+.home-banner-caption {
+    left: 0;
+    right: 0;
+    bottom: 14%;
+    text-align: left;
+}
+
+.home-banner-content {
+    max-width: 760px;
+    opacity: 0;
+    transform: translateY(26px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.home-banner-content.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.home-banner-content h2 {
+    color: #fff;
+    text-shadow: 0 6px 24px rgba(0, 0, 0, 0.4);
+}
+
+.home-banner-content p {
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 3px 16px rgba(0, 0, 0, 0.35);
+}
+
+.home-banner-empty {
+    background: linear-gradient(120deg, rgba(11, 110, 253, 0.2), rgba(25, 195, 125, 0.2));
+    padding: 3rem 0;
+}
+
+.home-banner-empty-card {
+    background: var(--surface-strong);
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    border-radius: 1rem;
+    padding: 2rem;
+}
+
+.content-card {
+    background: var(--surface-strong);
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    padding: 1.5rem;
+    box-shadow: 0 12px 24px rgba(17, 31, 53, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.content-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 30px rgba(17, 31, 53, 0.09);
+}
+
+.section-image {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    border-radius: 0.75rem;
+}
+
+.inquiry-panel {
+    background: var(--surface-strong);
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    padding: 1.5rem;
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    background: var(--surface-strong);
+    border-radius: 0.85rem;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.07);
+    transition: transform 0.2s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-3px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.gallery-item .caption {
+    padding: 0.85rem;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+.admin-body {
+    background: var(--surface);
+}
+
+.admin-shell {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+
+.admin-sidebar {
+    background: var(--surface-strong);
+    border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.admin-sidebar .nav-link {
+    color: inherit;
+    border-radius: 0.5rem;
+}
+
+.admin-sidebar .nav-link.active {
+    background: rgba(11, 110, 253, 0.1);
+    color: var(--primary-color);
+}
+
+.admin-content {
+    min-width: 0;
+}
+
+.stat-card {
+    border-radius: 0.9rem;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 1rem 1.25rem;
+    background: var(--surface-strong);
+}
+
+.theme-toggle {
+    white-space: nowrap;
+}
+
+[data-bs-theme="dark"] body,
+body[data-bs-theme="dark"] {
+    background: radial-gradient(circle at top right, #12243b 0%, #0f172a 45%, #090d1a 100%);
+}
+
+[data-bs-theme="dark"] .hero-box,
+[data-bs-theme="dark"] .content-card,
+[data-bs-theme="dark"] .inquiry-panel,
+[data-bs-theme="dark"] .gallery-item,
+[data-bs-theme="dark"] .admin-sidebar,
+[data-bs-theme="dark"] .stat-card {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: all 0.45s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes bannerZoom {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.08);
+    }
+}
+
+@media (max-width: 991px) {
+    .admin-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        border-right: 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .home-banner-caption {
+        bottom: 10%;
+    }
+
+    .home-banner-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .home-banner-content p {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,14 @@
+USE school_cms;
+
+CREATE TABLE IF NOT EXISTS home_banners (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(180) NOT NULL,
+    subtitle VARCHAR(255) DEFAULT NULL,
+    image_path VARCHAR(255) NOT NULL,
+    is_active TINYINT(1) NOT NULL DEFAULT 1,
+    sort_order INT NOT NULL DEFAULT 1,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    KEY idx_banner_active_sort (is_active, sort_order)
+) ENGINE=InnoDB;
+
