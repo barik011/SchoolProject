@@ -18,12 +18,25 @@ include __DIR__ . '/includes/header.php';
         </div>
     <?php else: ?>
         <div class="gallery-grid">
-            <?php foreach ($images as $image): ?>
+            <?php foreach ($images as $index => $image): ?>
+                <?php $imageUrl = url((string) $image['image_path']); ?>
                 <article class="gallery-item reveal">
-                    <img src="<?= e(url((string) $image['image_path'])) ?>" alt="<?= e($image['title']) ?>">
+                    <a href="<?= e($imageUrl) ?>" class="gallery-lightbox-trigger" data-gallery-lightbox="true" data-title="<?= e($image['title']) ?>" data-index="<?= e((string) $index) ?>">
+                        <img src="<?= e($imageUrl) ?>" alt="<?= e($image['title']) ?>">
+                    </a>
                     <div class="caption"><?= e($image['title']) ?></div>
                 </article>
             <?php endforeach; ?>
+        </div>
+
+        <div class="gallery-lightbox" id="galleryLightbox" aria-hidden="true">
+            <button type="button" class="gallery-lightbox-close" id="galleryLightboxClose" aria-label="Close image preview">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <figure class="gallery-lightbox-figure">
+                <img src="" alt="" id="galleryLightboxImage">
+                <figcaption id="galleryLightboxCaption"></figcaption>
+            </figure>
         </div>
     <?php endif; ?>
 </section>

@@ -10,10 +10,13 @@ $primaryColor = get_setting('primary_color', '#0b6efd');
 $defaultMode = get_setting('default_mode', 'light');
 $currentScript = basename($_SERVER['PHP_SELF'] ?? 'index.php');
 $activeScript = $currentScript === 'edit_banner.php' ? 'banners.php' : $currentScript;
+$activeScript = $activeScript === 'edit_section.php' ? 'pages.php' : $activeScript;
 
 $adminLinks = [
     'index.php' => 'Dashboard',
     'pages.php' => 'Page Content',
+    'custom_pages.php' => 'Custom Pages',
+    'menu_builder.php' => 'Menu Builder',
     'banners.php' => 'Home Banners',
     'gallery.php' => 'Gallery',
     'inquiries.php' => 'Inquiries',

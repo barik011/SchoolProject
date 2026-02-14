@@ -81,10 +81,10 @@ include __DIR__ . '/includes/header.php';
     <div class="row g-4">
         <div class="col-lg-4 reveal">
             <div class="content-card h-100">
-                <h2 class="h4">Admission Support</h2>
-                <p class="mb-2">Phone: <?= e(get_setting('contact_phone', '+1 000-000-0000')) ?></p>
-                <p class="mb-2">Email: <?= e(get_setting('contact_email', 'admissions@school.edu')) ?></p>
-                <p class="mb-0">Address: <?= e(get_setting('contact_address', 'School Campus Address')) ?></p>
+                <h2 class="h4"><i class="fa-solid fa-headset me-2 text-primary"></i>Admission Support</h2>
+                <p class="mb-2"><i class="fa-solid fa-phone me-2 text-primary"></i>Phone: <?= e(get_setting('contact_phone', '+1 000-000-0000')) ?></p>
+                <p class="mb-2"><i class="fa-regular fa-envelope me-2 text-primary"></i>Email: <?= e(get_setting('contact_email', 'admissions@school.edu')) ?></p>
+                <p class="mb-0"><i class="fa-solid fa-location-dot me-2 text-primary"></i>Address: <?= e(get_setting('contact_address', 'School Campus Address')) ?></p>
             </div>
         </div>
         <div class="col-lg-8 reveal">

@@ -47,12 +47,12 @@ include __DIR__ . '/includes/header.php';
     <div class="row g-4">
         <div class="col-lg-5 reveal">
             <div class="content-card h-100">
-                <h2 class="h4">School Office</h2>
-                <p class="mb-2"><strong>Phone:</strong> <?= e(get_setting('contact_phone', '+1 000-000-0000')) ?></p>
-                <p class="mb-2"><strong>Email:</strong> <?= e(get_setting('contact_email', 'info@school.edu')) ?></p>
-                <p class="mb-4"><strong>Address:</strong> <?= e(get_setting('contact_address', 'School Campus Address')) ?></p>
+                <h2 class="h4"><i class="fa-solid fa-building me-2 text-primary"></i>School Office</h2>
+                <p class="mb-2"><i class="fa-solid fa-phone me-2 text-primary"></i><strong>Phone:</strong> <?= e(get_setting('contact_phone', '+1 000-000-0000')) ?></p>
+                <p class="mb-2"><i class="fa-regular fa-envelope me-2 text-primary"></i><strong>Email:</strong> <?= e(get_setting('contact_email', 'info@school.edu')) ?></p>
+                <p class="mb-4"><i class="fa-solid fa-location-dot me-2 text-primary"></i><strong>Address:</strong> <?= e(get_setting('contact_address', 'School Campus Address')) ?></p>
                 <h3 class="h5">Office Hours</h3>
-                <p class="mb-0">Monday - Friday, 8:30 AM to 4:00 PM</p>
+                <p class="mb-0"><i class="fa-regular fa-clock me-2 text-primary"></i>Monday - Friday, 8:30 AM to 4:00 PM</p>
             </div>
         </div>
         <div class="col-lg-7 reveal">
