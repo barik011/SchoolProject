@@ -16,6 +16,11 @@ $input = [
     'message' => '',
 ];
 
+$fallbackImages = [
+    'uploads/gallery/2141b8f4fc1cb49ae649900bd9ef58bd.jpg',
+    'uploads/gallery/d8a8391c03b184b635c368e36b6dbff3.jpg',
+];
+
 if (is_post()) {
     $input = [
         'student_name' => trim((string) ($_POST['student_name'] ?? '')),
@@ -77,18 +82,42 @@ if (is_post()) {
 include __DIR__ . '/includes/header.php';
 ?>
 
-<section class="container">
+<section class="container mb-5">
+    <div class="facility-page-intro reveal">
+        <p class="facility-intro-kicker mb-2">Admissions</p>
+        <h1 class="mb-3">Admission Inquiry</h1>
+        <p class="mb-0">Share your inquiry details and our admissions team will guide you through class availability, process, and next steps.</p>
+    </div>
+</section>
+
+<section class="container mb-4">
     <div class="row g-4">
         <div class="col-lg-4 reveal">
-            <div class="content-card h-100">
-                <h2 class="h4"><i class="fa-solid fa-headset me-2 text-primary"></i>Admission Support</h2>
-                <p class="mb-2"><i class="fa-solid fa-phone me-2 text-primary"></i>Phone: <?= e(get_setting('contact_phone', '+1 000-000-0000')) ?></p>
-                <p class="mb-2"><i class="fa-regular fa-envelope me-2 text-primary"></i>Email: <?= e(get_setting('contact_email', 'admissions@school.edu')) ?></p>
-                <p class="mb-0"><i class="fa-solid fa-location-dot me-2 text-primary"></i>Address: <?= e(get_setting('contact_address', 'School Campus Address')) ?></p>
-            </div>
+            <article class="contact-info-card h-100">
+                <div class="contact-info-media">
+                    <img src="<?= e(url($fallbackImages[0])) ?>" alt="Admissions and student support">
+                </div>
+                <div class="p-3 p-lg-4">
+                    <h2 class="h4 mb-3"><i class="fa-solid fa-headset me-2 text-primary"></i>Admission Support</h2>
+                    <ul class="contact-list mb-4">
+                        <li><i class="fa-solid fa-phone"></i><span><?= e(get_setting('contact_phone', '+1 000-000-0000')) ?></span></li>
+                        <li><i class="fa-regular fa-envelope"></i><span><?= e(get_setting('contact_email', 'admissions@school.edu')) ?></span></li>
+                        <li><i class="fa-solid fa-location-dot"></i><span><?= e(get_setting('contact_address', 'School Campus Address')) ?></span></li>
+                    </ul>
+                    <div class="admission-steps">
+                        <h3 class="h6 mb-2">Admission Process</h3>
+                        <ol class="mb-0">
+                            <li>Submit inquiry form</li>
+                            <li>Connect with admissions desk</li>
+                            <li>Campus visit and final guidance</li>
+                        </ol>
+                    </div>
+                </div>
+            </article>
         </div>
+
         <div class="col-lg-8 reveal">
-            <div class="inquiry-panel">
+            <div class="inquiry-panel h-100">
                 <h2 class="h4 mb-3">Admission Inquiry Form</h2>
                 <?php if ($errors): ?>
                     <div class="alert alert-danger">
@@ -132,8 +161,29 @@ include __DIR__ . '/includes/header.php';
                             <textarea name="message" rows="4" class="form-control" required minlength="10"><?= e($input['message']) ?></textarea>
                         </div>
                     </div>
-                    <button class="btn btn-primary mt-3" type="submit">Submit Inquiry</button>
+                    <button class="btn btn-primary mt-3" type="submit">
+                        <i class="fa-solid fa-file-signature me-2"></i>Submit Inquiry
+                    </button>
                 </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container mb-4">
+    <div class="welcome-about-card reveal">
+        <div class="row g-0 align-items-center">
+            <div class="col-lg-5">
+                <div class="welcome-about-media h-100">
+                    <img src="<?= e(url($fallbackImages[1])) ?>" alt="Students during school orientation">
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="welcome-about-content">
+                    <h2 class="h4 mb-3">Campus Visit and Counselling</h2>
+                    <p class="mb-3">Families are welcome to visit the campus and interact with our team to understand academics, co-curricular offerings, and classroom environment.</p>
+                    <a href="<?= e(url('contact.php')) ?>" class="btn btn-outline-primary">Book a Visit</a>
+                </div>
             </div>
         </div>
     </div>

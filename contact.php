@@ -12,6 +12,11 @@ $input = [
     'message' => '',
 ];
 
+$fallbackImages = [
+    'uploads/gallery/d8a8391c03b184b635c368e36b6dbff3.jpg',
+    'uploads/gallery/c6c6c1d60fae4dc1174559e9459936bf.jpg',
+];
+
 if (is_post()) {
     $input = [
         'name' => trim((string) ($_POST['name'] ?? '')),
@@ -43,20 +48,38 @@ if (is_post()) {
 include __DIR__ . '/includes/header.php';
 ?>
 
-<section class="container">
+<section class="container mb-5">
+    <div class="facility-page-intro reveal">
+        <p class="facility-intro-kicker mb-2">Connect With Us</p>
+        <h1 class="mb-3">Contact Us</h1>
+        <p class="mb-0">Get in touch with our school office for admissions, academic support, and general information. Our team will be happy to assist you.</p>
+    </div>
+</section>
+
+<section class="container mb-4">
     <div class="row g-4">
         <div class="col-lg-5 reveal">
-            <div class="content-card h-100">
-                <h2 class="h4"><i class="fa-solid fa-building me-2 text-primary"></i>School Office</h2>
-                <p class="mb-2"><i class="fa-solid fa-phone me-2 text-primary"></i><strong>Phone:</strong> <?= e(get_setting('contact_phone', '+1 000-000-0000')) ?></p>
-                <p class="mb-2"><i class="fa-regular fa-envelope me-2 text-primary"></i><strong>Email:</strong> <?= e(get_setting('contact_email', 'info@school.edu')) ?></p>
-                <p class="mb-4"><i class="fa-solid fa-location-dot me-2 text-primary"></i><strong>Address:</strong> <?= e(get_setting('contact_address', 'School Campus Address')) ?></p>
-                <h3 class="h5">Office Hours</h3>
-                <p class="mb-0"><i class="fa-regular fa-clock me-2 text-primary"></i>Monday - Friday, 8:30 AM to 4:00 PM</p>
-            </div>
+            <article class="contact-info-card h-100">
+                <div class="contact-info-media">
+                    <img src="<?= e(url($fallbackImages[0])) ?>" alt="School campus front view">
+                </div>
+                <div class="p-3 p-lg-4">
+                    <h2 class="h4 mb-3"><i class="fa-solid fa-building me-2 text-primary"></i>School Office</h2>
+                    <ul class="contact-list mb-4">
+                        <li><i class="fa-solid fa-phone"></i><span><?= e(get_setting('contact_phone', '+1 000-000-0000')) ?></span></li>
+                        <li><i class="fa-regular fa-envelope"></i><span><?= e(get_setting('contact_email', 'info@school.edu')) ?></span></li>
+                        <li><i class="fa-solid fa-location-dot"></i><span><?= e(get_setting('contact_address', 'School Campus Address')) ?></span></li>
+                        <li><i class="fa-regular fa-clock"></i><span>Monday - Friday, 8:30 AM to 4:00 PM</span></li>
+                    </ul>
+                    <div class="contact-mini-note">
+                        <i class="fa-solid fa-headset me-2"></i>Admissions and office team typically respond within one business day.
+                    </div>
+                </div>
+            </article>
         </div>
+
         <div class="col-lg-7 reveal">
-            <div class="inquiry-panel">
+            <div class="inquiry-panel h-100">
                 <h2 class="h4 mb-3">Send Us a Message</h2>
                 <?php if ($errors): ?>
                     <div class="alert alert-danger">
@@ -79,9 +102,11 @@ include __DIR__ . '/includes/header.php';
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Message</label>
-                        <textarea name="message" rows="5" class="form-control" required minlength="10"><?= e($input['message']) ?></textarea>
+                        <textarea name="message" rows="6" class="form-control" required minlength="10"><?= e($input['message']) ?></textarea>
                     </div>
-                    <button class="btn btn-primary" type="submit">Send Message</button>
+                    <button class="btn btn-primary" type="submit">
+                        <i class="fa-regular fa-paper-plane me-2"></i>Send Message
+                    </button>
                 </form>
             </div>
         </div>

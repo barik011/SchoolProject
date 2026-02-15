@@ -14,6 +14,7 @@
 body {
     font-family: "Manrope", sans-serif;
     background: linear-gradient(180deg, #f5f8ff 0%, #ffffff 45%);
+    color: #1d2635;
 }
 
 h1,
@@ -145,6 +146,27 @@ h6 {
 
 .hero-copy {
     color: var(--text-muted);
+}
+
+body:not(.admin-body) .btn {
+    border-radius: 0.68rem;
+    font-weight: 600;
+    padding: 0.56rem 1.02rem;
+}
+
+body:not(.admin-body) .btn-sm {
+    padding: 0.4rem 0.78rem;
+    font-size: 0.84rem;
+}
+
+body:not(.admin-body) .form-control,
+body:not(.admin-body) .form-select {
+    min-height: 46px;
+    border-radius: 0.68rem;
+}
+
+body:not(.admin-body) textarea.form-control {
+    min-height: 128px;
 }
 
 .home-banner-wrap {
@@ -281,6 +303,7 @@ h6 {
 
 .section-head h2 {
     font-family: "Merriweather", serif;
+    font-size: clamp(1.35rem, 2.2vw, 1.78rem);
 }
 
 .section-image {
@@ -429,6 +452,39 @@ h6 {
     object-fit: cover;
 }
 
+.welcome-about-card {
+    background: var(--surface-strong);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(17, 31, 53, 0.06);
+}
+
+.welcome-about-media img {
+    width: 100%;
+    height: 100%;
+    min-height: 260px;
+    object-fit: cover;
+}
+
+.welcome-about-content {
+    padding: 2rem;
+}
+
+.welcome-about-content p {
+    color: var(--text-muted);
+}
+
+.welcome-tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
 .facility-card {
     border-radius: 0.9rem;
     overflow: hidden;
@@ -453,6 +509,159 @@ h6 {
     color: var(--text-muted);
 }
 
+.facility-card-link {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    height: 100%;
+}
+
+.facility-card-link:hover .facility-more {
+    color: var(--primary-color);
+}
+
+.facility-more {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #334055;
+}
+
+.facility-page-intro {
+    background: linear-gradient(130deg, rgba(11, 110, 253, 0.12), rgba(25, 195, 125, 0.13));
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.facility-page-intro h1 {
+    font-size: clamp(1.82rem, 2.9vw, 2.42rem);
+}
+
+.facility-page-intro p {
+    color: #38465d;
+    max-width: 78ch;
+}
+
+.facility-intro-kicker {
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.facility-jump-link {
+    border-radius: 0.8rem;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    background: var(--surface-strong);
+}
+
+.facility-jump-link img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.facility-jump-link span {
+    display: block;
+    padding: 0.8rem 1rem;
+    font-weight: 700;
+}
+
+.facility-detail-block {
+    background: var(--surface-strong);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 1rem;
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    scroll-margin-top: 100px;
+}
+
+.facility-detail-media img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 0.8rem;
+}
+
+.facility-detail-content h2 {
+    margin-bottom: 0.8rem;
+}
+
+.facility-detail-content p {
+    color: var(--text-muted);
+}
+
+.contact-info-card {
+    background: var(--surface-strong);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(17, 31, 53, 0.06);
+    height: 100%;
+}
+
+.contact-info-media img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.7rem;
+}
+
+.contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    color: var(--text-muted);
+}
+
+.contact-list li i {
+    color: var(--primary-color);
+    margin-top: 0.15rem;
+}
+
+.contact-mini-note {
+    background: rgba(11, 110, 253, 0.08);
+    border: 1px solid rgba(11, 110, 253, 0.16);
+    color: #23324d;
+    padding: 0.65rem 0.8rem;
+    border-radius: 0.65rem;
+    font-size: 0.92rem;
+}
+
+.admission-steps ol {
+    padding-left: 1.2rem;
+    margin: 0;
+}
+
+.admission-steps li {
+    color: var(--text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.gallery-item {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery-item .caption {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
 .page-content {
     line-height: 1.8;
 }
@@ -475,6 +684,29 @@ h6 {
 [data-bs-theme="dark"] .feature-icon,
 [data-bs-theme="dark"] .stat-icon {
     background: rgba(11, 110, 253, 0.25);
+}
+
+[data-bs-theme="dark"] .welcome-about-card,
+[data-bs-theme="dark"] .facility-page-intro,
+[data-bs-theme="dark"] .facility-jump-link,
+[data-bs-theme="dark"] .facility-detail-block,
+[data-bs-theme="dark"] .contact-info-card {
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: none;
+}
+
+[data-bs-theme="dark"] .facility-more {
+    color: #c9d2e3;
+}
+
+[data-bs-theme="dark"] .facility-page-intro p {
+    color: #d0d9e9;
+}
+
+[data-bs-theme="dark"] .contact-mini-note {
+    background: rgba(11, 110, 253, 0.22);
+    border-color: rgba(11, 110, 253, 0.38);
+    color: #d9e4ff;
 }
 
 [data-bs-theme="dark"] body,
@@ -704,6 +936,14 @@ body[data-bs-theme="dark"] {
 
     .hero-fallback-copy h1 {
         font-size: 1.85rem;
+    }
+
+    .welcome-about-content {
+        padding: 1.35rem;
+    }
+
+    .facility-detail-media img {
+        height: 210px;
     }
 
     .dynamic-menu .dropdown-menu {

@@ -7,8 +7,10 @@ $pageTitle = 'Home';
 $metaDescription = 'Discover our academic environment, values, facilities, and admissions.';
 $hideDefaultHero = true;
 $banners = get_home_banners();
-$sections = array_values(array_filter(get_sections('home'), fn(array $s): bool => (int) $s['is_enabled'] === 1));
-$facilitySections = array_values(array_filter(get_sections('home_facilities'), fn(array $s): bool => (int) $s['is_enabled'] === 1));
+$schoolName = get_setting('school_name', 'Greenfield Public School');
+$homeSections = array_values(array_filter(get_sections('home'), fn(array $s): bool => (int) $s['is_enabled'] === 1));
+$sections = count($homeSections) > 1 ? array_slice($homeSections, 1) : [];
+$facilitySections = array_values(array_filter(get_sections('facilities'), fn(array $s): bool => (int) $s['is_enabled'] === 1));
 
 $fallbackImages = [
     'uploads/gallery/d8a8391c03b184b635c368e36b6dbff3.jpg',
@@ -34,18 +36,41 @@ $defaultFacilities = [
         'title' => 'Smart Classrooms',
         'content' => 'Interactive boards, digital resources, and student-centered learning spaces for every grade level.',
         'image' => $fallbackImages[0],
+        'anchor' => 'facility-smart-classrooms',
     ],
     [
         'title' => 'Science and Computer Labs',
         'content' => 'Hands-on practical labs designed for experimentation, coding, and applied STEM learning.',
         'image' => $fallbackImages[1],
+        'anchor' => 'facility-science-and-computer-labs',
     ],
     [
         'title' => 'Sports and Activity Zone',
         'content' => 'Dedicated grounds and activity spaces to support fitness, teamwork, discipline, and confidence.',
         'image' => $fallbackImages[2],
+        'anchor' => 'facility-sports-and-activity-zone',
     ],
 ];
+
+$welcomeSection = $homeSections[0] ?? null;
+$welcomeTitle = $welcomeSection['title'] ?? ('Welcome to ' . $schoolName);
+$welcomeContent = $welcomeSection['content'] ?? 'Our school empowers students through modern learning, strong values, and vibrant co-curricular opportunities. We help every child discover confidence, creativity, and leadership in a safe campus environment.';
+$welcomeImage = !empty($welcomeSection['image_path']) ? (string) $welcomeSection['image_path'] : $fallbackImages[0];
+
+$homeFacilities = [];
+if (!$facilitySections) {
+    $homeFacilities = $defaultFacilities;
+} else {
+    foreach ($facilitySections as $index => $facility) {
+        $anchorBase = trim((string) ($facility['section_key'] ?? '')) !== '' ? (string) $facility['section_key'] : (string) $facility['title'];
+        $homeFacilities[] = [
+            'title' => (string) $facility['title'],
+            'content' => (string) $facility['content'],
+            'image' => !empty($facility['image_path']) ? (string) $facility['image_path'] : $fallbackImages[$index % count($fallbackImages)],
+            'anchor' => 'facility-' . slugify($anchorBase),
+        ];
+    }
+}
 
 include __DIR__ . '/includes/header.php';
 ?>
@@ -119,6 +144,29 @@ include __DIR__ . '/includes/header.php';
 </section>
 
 <section class="container mb-5">
+    <article class="welcome-about-card reveal">
+        <div class="row g-0 align-items-stretch">
+            <div class="col-lg-5">
+                <div class="welcome-about-media h-100">
+                    <img src="<?= e(url($welcomeImage)) ?>" alt="<?= e($welcomeTitle) ?>">
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="welcome-about-content">
+                    <p class="welcome-tag mb-2">Welcome</p>
+                    <h2 class="mb-3"><?= e($welcomeTitle) ?></h2>
+                    <p class="mb-4"><?= e(mb_strimwidth(strip_tags((string) $welcomeContent), 0, 360, '...')) ?></p>
+                    <a href="<?= e(url('about.php')) ?>" class="btn btn-primary">
+                        Read More About Us
+                        <i class="fa-solid fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </article>
+</section>
+
+<section class="container mb-5">
     <div class="row g-4">
         <div class="col-md-4 reveal">
             <div class="stat-card">
@@ -155,32 +203,20 @@ include __DIR__ . '/includes/header.php';
         </a>
     </div>
     <div class="row g-4">
-        <?php if (!$facilitySections): ?>
-            <?php foreach ($defaultFacilities as $facility): ?>
-                <div class="col-md-6 col-xl-4 reveal">
-                    <article class="facility-card h-100">
+        <?php foreach ($homeFacilities as $facility): ?>
+            <div class="col-md-6 col-xl-4 reveal">
+                <article class="facility-card h-100">
+                    <a href="<?= e(url('facilities.php#' . $facility['anchor'])) ?>" class="facility-card-link">
                         <img src="<?= e(url($facility['image'])) ?>" alt="<?= e($facility['title']) ?>">
                         <div class="p-3">
                             <h3 class="h5 mb-2"><?= e($facility['title']) ?></h3>
-                            <p class="mb-0"><?= e($facility['content']) ?></p>
+                            <p class="mb-2"><?= e(mb_strimwidth(strip_tags((string) $facility['content']), 0, 140, '...')) ?></p>
+                            <span class="facility-more">Explore Details <i class="fa-solid fa-arrow-right ms-1"></i></span>
                         </div>
-                    </article>
-                </div>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <?php foreach ($facilitySections as $index => $section): ?>
-                <?php $facilityImage = !empty($section['image_path']) ? (string) $section['image_path'] : $fallbackImages[$index % count($fallbackImages)]; ?>
-                <div class="col-md-6 col-xl-4 reveal">
-                    <article class="facility-card h-100">
-                        <img src="<?= e(url($facilityImage)) ?>" alt="<?= e($section['title']) ?>">
-                        <div class="p-3">
-                            <h3 class="h5 mb-2"><?= e($section['title']) ?></h3>
-                            <p class="mb-0"><?= nl2br(e($section['content'])) ?></p>
-                        </div>
-                    </article>
-                </div>
-            <?php endforeach; ?>
-        <?php endif; ?>
+                    </a>
+                </article>
+            </div>
+        <?php endforeach; ?>
     </div>
 </section>
 

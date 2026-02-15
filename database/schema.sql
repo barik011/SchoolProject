@@ -118,16 +118,14 @@ INSERT INTO site_settings (setting_key, setting_value) VALUES
 ('contact_address', '123 Education Avenue, City')
 ON DUPLICATE KEY UPDATE setting_value = VALUES(setting_value);
 
-INSERT INTO page_sections (page_slug, section_key, title, content, sort_order, is_enabled) VALUES
-('home', 'welcome', 'A Future-Ready Learning Environment', 'Our school blends academics, values, and life skills to develop confident learners ready for tomorrow.', 1, 1),
-('home', 'holistic_growth', 'Holistic Growth for Every Child', 'From STEM labs and sports programs to arts and leadership opportunities, every student explores their full potential.', 2, 1),
-('home_facilities', 'smart_classrooms', 'Smart Classrooms', 'Interactive smart classrooms with student-centered teaching aids for engaging everyday learning.', 1, 1),
-('home_facilities', 'science_lab', 'Science and Innovation Labs', 'Well-equipped labs that encourage experimentation, analytical thinking, and problem-solving skills.', 2, 1),
-('home_facilities', 'sports_arena', 'Sports and Activity Arena', 'Indoor and outdoor activity zones that build discipline, fitness, teamwork, and leadership.', 3, 1),
-('about', 'mission', 'Our Mission', 'To nurture compassionate, curious, and capable learners through high-quality education and strong values.', 1, 1),
-('about', 'vision', 'Our Vision', 'To be a trusted school that empowers students to excel academically and socially in a changing world.', 2, 1),
-('facilities', 'smart_classrooms', 'Smart Classrooms', 'Tech-enabled classrooms support interactive and personalized learning experiences.', 1, 1),
-('facilities', 'library', 'Library and Reading Zones', 'A curated reading ecosystem that builds strong comprehension and lifelong reading habits.', 2, 1),
-('infrastructure', 'campus', 'Safe and Green Campus', 'A secure, well-maintained campus with monitored entry points, hygiene zones, and open learning spaces.', 1, 1),
-('infrastructure', 'labs', 'Science and Computer Labs', 'Dedicated labs designed for practical learning, innovation, and collaborative projects.', 2, 1)
-ON DUPLICATE KEY UPDATE title = VALUES(title), content = VALUES(content), sort_order = VALUES(sort_order), is_enabled = VALUES(is_enabled);
+INSERT INTO page_sections (page_slug, section_key, title, content, image_path, sort_order, is_enabled) VALUES
+('home', 'welcome', 'Welcome to Our School', 'Our school blends academics, values, and life skills to develop confident learners ready for tomorrow.', 'uploads/gallery/d8a8391c03b184b635c368e36b6dbff3.jpg', 1, 1),
+('home', 'holistic_growth', 'Holistic Growth for Every Child', 'From STEM labs and sports programs to arts and leadership opportunities, every student explores their full potential.', 'uploads/gallery/c6c6c1d60fae4dc1174559e9459936bf.jpg', 2, 1),
+('about', 'mission', 'Our Mission', 'To nurture compassionate, curious, and capable learners through high-quality education and strong values.', 'uploads/gallery/2141b8f4fc1cb49ae649900bd9ef58bd.jpg', 1, 1),
+('about', 'vision', 'Our Vision', 'To be a trusted school that empowers students to excel academically and socially in a changing world.', 'uploads/gallery/c6c6c1d60fae4dc1174559e9459936bf.jpg', 2, 1),
+('facilities', 'smart_classrooms', 'Smart Classrooms', 'Tech-enabled classrooms support interactive and personalized learning experiences.', 'uploads/gallery/d8a8391c03b184b635c368e36b6dbff3.jpg', 1, 1),
+('facilities', 'library', 'Library and Reading Zones', 'A curated reading ecosystem that builds strong comprehension and lifelong reading habits.', 'uploads/gallery/c6c6c1d60fae4dc1174559e9459936bf.jpg', 2, 1),
+('facilities', 'sports_arena', 'Sports and Activity Arena', 'Dedicated indoor and outdoor spaces that support student fitness, teamwork, and leadership development.', 'uploads/gallery/2141b8f4fc1cb49ae649900bd9ef58bd.jpg', 3, 1),
+('infrastructure', 'campus', 'Safe and Green Campus', 'A secure, well-maintained campus with monitored entry points, hygiene zones, and open learning spaces.', 'uploads/gallery/d8a8391c03b184b635c368e36b6dbff3.jpg', 1, 1),
+('infrastructure', 'labs', 'Science and Computer Labs', 'Dedicated labs designed for practical learning, innovation, and collaborative projects.', 'uploads/gallery/c6c6c1d60fae4dc1174559e9459936bf.jpg', 2, 1)
+ON DUPLICATE KEY UPDATE title = VALUES(title), content = VALUES(content), image_path = VALUES(image_path), sort_order = VALUES(sort_order), is_enabled = VALUES(is_enabled);

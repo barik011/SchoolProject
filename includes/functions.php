@@ -50,7 +50,6 @@ function cms_pages(): array
 {
     return [
         'home' => 'Home',
-        'home_facilities' => 'Home Facilities',
         'about' => 'About the School',
         'facilities' => 'Facilities',
         'infrastructure' => 'Infrastructure',
